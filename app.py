@@ -1,5 +1,9 @@
 from flask import Flask, render_template, request, jsonify
-from utils import model_predict
+from utils import model_predict # apo to arxio utils (utils.py pou briskete sto idio katalogo),
+                                # kano import in function me onoma model_predict
+# einai kali praktiki na exo mia boithitiko arxio (utils) to opoio exei oles tis xrisimes functions
+# pou xrisimopoio sto main arxio (Java2)
+
 app = Flask(__name__)
 
 
@@ -10,7 +14,7 @@ def home():
 
 @app.route('/predict', methods=['POST'])
 def predict():
-    email = request.form.get('content')
+    email = request.form.get('content') # pernoume to periexomeno tou email
     prediction = model_predict(email)
     return render_template("index.html", prediction=prediction, email=email)
 

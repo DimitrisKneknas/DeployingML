@@ -34,11 +34,11 @@
     </div>
     <div>
         {% if prediction %}
-        {% if prediction == 1 %}
-        <h2 style="color: red">Spam</h2>
-        {% else %}
+        {% if prediction == 1 %} <!-- to format tou if sto html -->
+        <h2 style="color: red">Spam</h2> <!-- an to prediction=1 tote grapse me h2 Spam me kokkino xroma-->
+        {% else %} <!-- to format tou else sto html -->
         <h2 style="color: green">Not Spam</h2>
-        {% endif %}
+        {% endif %} <!-- otan telioni to if -->
         {% endif %}
         <!-- <p id="display"></p> -->
     </div>
