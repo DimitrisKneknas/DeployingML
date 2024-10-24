@@ -1,47 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <title>
-        Email Spam Classifier
-    </title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Spam Classifier</title>
     <style>
         body {
+            font-family: Arial, sans-serif;
             text-align: center;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 30px;
+        }
+
+        form {
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 400px;
+            max-width: 1000px;
+            height: 200px;
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            resize: none;
         }
 
         button {
-            color: aliceblue;
-            background-color: blue;
+            color: white;
+            background-color: #007bff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-size: 16px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .result h2 {
+            margin-top: 20px;
+        }
+
+        .result h2.spam {
+            color: red;
+        }
+
+        .result h2.not-spam {
+            color: green;
         }
     </style>
 </head>
 
 <body>
-    <h1>Email Spam Classifier</h1>
-    <div>
-        <form method="post" action="/predict">
-            <textarea rows="12" cols="60" name="content" placeholder="Enter your email here"
-                autocomplete="off">{{ email }}</textarea>
-            <div>
-                <button type="submit">
-                    Button
-                </button>
-                <a href="/">Reset</a>
-            </div>
-        </form>
 
-    </div>
-    <div>
+    <h1>Email Spam Classifier</h1>
+    <form method="post" action="/predict">
+        <textarea name="content" placeholder="Enter your email here" autocomplete="off">{{ email }}</textarea>
+        <div>
+            <button type="submit">Classify</button>
+            <a href="/">Reset</a>
+        </div>
+    </form>
+
+    <div class="result">
         {% if prediction %}
-        {% if prediction == 1 %} <!-- to format tou if sto html -->
-        <h2 style="color: red">Spam</h2> <!-- an to prediction=1 tote grapse me h2 Spam me kokkino xroma-->
-        {% else %} <!-- to format tou else sto html -->
-        <h2 style="color: green">Not Spam</h2>
-        {% endif %} <!-- otan telioni to if -->
+        {% if prediction == 1 %}
+        <h2 class="spam">Spam</h2>
+        {% else %}
+        <h2 class="not-spam">Not Spam</h2>
         {% endif %}
-        <!-- <p id="display"></p> -->
+        {% endif %}
     </div>
+
 </body>
 
 </html>
